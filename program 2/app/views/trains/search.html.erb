@@ -1,0 +1,14 @@
+<% if @train.present? %>
+  <h3>Passengers on Train <%= @train.trainnumber %></h3>
+  <ul>
+    <% @passengers.each do |passenger| %>
+      <li><%= passenger.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No passengers found for the specified train number.</p>
+<% end %>
+
+
+
+<br><%= link_to "Admin Home", admins_url %><br>

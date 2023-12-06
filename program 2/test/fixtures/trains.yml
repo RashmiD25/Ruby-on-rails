@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trainnumber: MyString
+  departurestation: MyString
+  terminationstation: MyString
+  departuredate: 2023-09-28 14:02:52
+  departuretime: 2023-09-28 14:02:52
+  arrivaldate: 2023-09-28 14:02:52
+  arrivaltime: 2023-09-28 14:02:52
+  ticketprice: 9.99
+  traincapacity: 1
+  seatsleft: 1
+
+two:
+  trainnumber: MyString
+  departurestation: MyString
+  terminationstation: MyString
+  departuredate: 2023-09-28 14:02:52
+  departuretime: 2023-09-28 14:02:52
+  arrivaldate: 2023-09-28 14:02:52
+  arrivaltime: 2023-09-28 14:02:52
+  ticketprice: 9.99
+  traincapacity: 1
+  seatsleft: 1

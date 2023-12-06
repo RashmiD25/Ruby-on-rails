@@ -1,0 +1,55 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Passengers</h1>
+
+<% if admin_user %>
+
+<div id="passengers">
+
+  <table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Credit Number</th>
+      <th>Show Passenger</th>
+      <!-- Add more table headers for other attributes if needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @passengers.each do |passenger| %>
+      <tr>
+      <td><%= passenger.name %></td>
+      <td><%= passenger.email %></td>
+      <td><%= passenger.phone %></td>
+      <td><%= passenger.address %></td>
+      <td><%= passenger.creditnumber %></td>
+      <td><%= link_to "Show", passenger %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+
+</div>
+
+<br><%= link_to "Admin Home", admins_url %><br>
+<br><%= link_to "New Passenger", new_passenger_path %><br>
+
+
+<% elsif current_user %>
+
+You are Logged in as <%= current_user.email %>.
+<br>
+Your Passenger ID is <%= current_user.id %>
+
+<br><%= link_to "Edit Profile", edit_passenger_path(current_user.id) %><br>
+<br><%= link_to "View Trains", trains_url('index') %> <br>
+<br><%= link_to "View Tickets", tickets_url('index') %> <br>
+<br><%= link_to "View Reviews", reviews_url('index') %> <br>
+<br><%= link_to "User Home", passengers_url %><br>
+<br><%= link_to "Log Out", logout_path %><br>
+
+<% end %>

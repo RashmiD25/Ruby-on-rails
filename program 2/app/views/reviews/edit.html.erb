@@ -1,0 +1,15 @@
+<h1>Editing review</h1>
+
+<%= render "form", review: @review %>
+
+<br>
+
+<div>
+  <%= link_to "Show this review", @review %> |
+  <%= link_to "Back to reviews", reviews_path %>
+  <% if admin_user %>
+    <br><%= link_to "Admin Home", admins_url %><br>
+  <% elsif current_user %>
+    <br><%= link_to "User Home", passengers_url %><br>
+  <% end %>
+</div>

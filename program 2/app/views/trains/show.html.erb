@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @train %>
+
+<div>
+  <%= link_to "Edit this train", edit_train_path(@train) %> |
+  <%= link_to "Back to trains", trains_path %>
+
+  <%= button_to "Destroy this train", @train, method: :delete %>
+  <% if admin_user %>
+  <br><%= link_to "Admin Home", admins_url %><br>
+  <% elsif current_user %>
+  <br><%= link_to "User Home", passengers_url %><br>
+  <% end %>
+</div>

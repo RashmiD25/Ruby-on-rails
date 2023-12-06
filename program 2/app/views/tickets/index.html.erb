@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>New Tickets</h1>
+
+<% if admin_user %>
+<div id="tickets">
+  <% @tickets.each do |ticket| %>
+    <%= render ticket %>
+    <p>
+      <%= link_to "Show this ticket", ticket %>
+    </p>
+  <% end %>
+</div>
+<% end%>
+
+<% if current_user %>
+<div id="tickets">
+  <% @tickets.each do |ticket| %>
+<% if ticket.passengerid == current_user.id.to_s %>
+   
+    <%= render ticket %>
+    <p>
+      <%= link_to "Show this ticket", ticket %>
+    </p>
+    <%end%>
+  <% end %>
+</div>
+<% end%>
+
+<% if current_user %>
+<br><%= link_to "Get New ticket", new_ticket_path %><br>
+<br><%= link_to "Trip History", "trains/previous/Time.now" %><br>
+<br><%= link_to "User Home", passengers_url %><br>
+<% elsif admin_user %>
+<br><%= link_to "New ticket", new_ticket_path %><br>
+<br><%= link_to "Admin Home", admins_url %><br>
+<% end %>

@@ -1,0 +1,121 @@
+<p style="color: green"><%= notice %></p>
+
+<h1> Select station to see Departure and Termination details: </h1>
+<% @trains.each do |train| %>
+<td><%= link_to train.departurestation, "trains/departing/#{train.departurestation}" %></td>
+<% end %>
+
+<h1>Trains</h1>
+
+<% if admin_user %>
+<h2>Search for Passengers by Train ID</h2>
+<%= form_tag(train_search_path, method: :get) do %>
+  <%= label_tag 'Train ID:' %>
+  <%= text_field_tag 'train_number' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+<% end %>
+
+
+
+
+<h3>
+Current Time - <%= Time.now.utc %>
+</h3>
+
+<div id="trains">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Train ID</th>
+        <th>Train Number</th>
+        <th>Departure Station</th>
+        <th>Termination Station</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
+        <th>Arrival Date</th>
+        <th>Arrival Time</th>
+        <th>Ticket Price</th>
+        <th>Train Capacity</th>
+        <th>Seats Left</th>
+        <th>Link To Train</th>
+        <th>Buy</th>
+        <!-- Add more table headers for other attributes if needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @trains.each do |train| %>
+        <tr>
+        <td><%= train.id %></td>
+        <td><%= train.trainnumber %></td>
+        <td><%= train.departurestation %></td>
+        <td><%= train.terminationstation %></td>
+        <td><%= train.departuredate %></td>
+        <td><%= train.departuretime %></td>
+        <td><%= train.arrivaldate %></td>
+        <td><%= train.arrivaltime %></td>
+        <td><%= train.ticketprice %></td>
+        <td><%= train.traincapacity %></td>
+        <td><%= train.seatsleft %></td>
+        <td><%= link_to "Show", train %></td>
+          <td><%= link_to "Book Train ID #{train.id}", new_ticket_path %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+
+<h2> Trains with more than average(>3) rating: </h2>
+<div id="trains">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Train ID</th>
+        <th>Train Number</th>
+        <th>Departure Station</th>
+        <th>Termination Station</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
+        <th>Arrival Date</th>
+        <th>Arrival Time</th>
+        <th>Ticket Price</th>
+        <th>Train Capacity</th>
+        <th>Seats Left</th>
+        <th>Link To Train</th>
+        <th>Buy</th>
+        <!-- Add more table headers for other attributes if needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @high_rated_trains.each do |train| %>
+        <tr>
+        <td><%= train.id %></td>
+        <td><%= train.trainnumber %></td>
+        <td><%= train.departurestation %></td>
+        <td><%= train.terminationstation %></td>
+        <td><%= train.departuredate %></td>
+        <td><%= train.departuretime %></td>
+        <td><%= train.arrivaldate %></td>
+        <td><%= train.arrivaltime %></td>
+        <td><%= train.ticketprice %></td>
+        <td><%= train.traincapacity %></td>
+        <td><%= train.seatsleft %></td>
+        <td><%= link_to "Show", train %></td>
+          <td><%= link_to "Book Train ID #{train.id}", new_ticket_path %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+
+
+<h2></h2>
+
+<% if admin_user %>
+<br><%= link_to "New train", new_train_path %><br>
+<br><%= link_to "Admin Home", admins_url %><br>
+<% elsif current_user %>
+<br><%= link_to "User Home", passengers_url %><br>
+<br><%= link_to "Upcoming Available Trains", "trains/upcoming/Time.now" %><br>
+<% end %>

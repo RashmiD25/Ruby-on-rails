@@ -1,0 +1,15 @@
+<% if admin_user %>
+  Logged in as Admin (<%= admin_user.username %>).
+  <%= link_to "Log Out", logout_path %>
+  <br><%= link_to "Admin Home", admins_url %><br>
+<% elsif current_user %>
+  Logged in as Passenger (<%= current_user.email %>).
+  <%= link_to "Log Out", logout_path %>
+  <%= link_to "Passenger Home", passengers_url('index') %>  
+<% else %>
+  <%= link_to "Sign Up", signup_path %> or 
+  <%= link_to "Log In", login_path %>
+<% end %>
+
+<p id=”notice”><%= notice %></p><h1>Train Ticket Booking System</h1>
+<p>Ticket Booking System</p>

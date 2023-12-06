@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @ticket %>
+
+<div>
+  <%= link_to "Edit this ticket", edit_ticket_path(@ticket) %> |
+  <%= link_to "Back to tickets", tickets_path %>
+
+  <%= button_to "Cancel this ticket", @ticket, method: :delete %>
+
+</div>
+
+<% if admin_user %>
+<br><%= link_to "Admin Home", admins_url %><br>
+<% elsif current_user %>
+<br><%= link_to "User Home", passengers_url %><br>
+<%end%>

@@ -1,0 +1,31 @@
+
+<h2>Reviews written by passenger: <%= @user %></h2>
+
+ <table border="1">
+    <thead>
+      <tr>
+        <th>Passenger Id</th>
+        <th>Train Id</th>
+        <th>Rating</th>
+        <th>Feedback</th>
+        <th>Link To Review</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_reviews.each do |review| %>
+        <tr>
+        <td><%= review.passengerid %></td>
+        <td><%= review.trainid %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.feedback %></td>
+        <td><%= link_to "Show", review %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+
+<% if admin_user %>
+<br><%= link_to "Admin Home", admins_url %><br>
+<% elsif current_user %>
+<br><%= link_to "User Home", passengers_url %><br>
+<% end %>

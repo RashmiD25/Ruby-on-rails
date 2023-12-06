@@ -1,0 +1,45 @@
+<h1>Upcoming Available Trains</h1>
+<h3> Current Time <%= Time.now.utc %> </h3>
+<table border="1">
+<thead>
+  <tr>
+    <th>Train Number</th>
+    <th>Departure Station</th>
+    <th>Termination Station</th>
+    <th>Departure Date</th>
+    <th>Departure Time</th>
+    <th>Arrival Date</th>
+    <th>Arrival Time</th>
+    <th>Ticket Price</th>
+    <th>Train Capacity</th>
+    <th>Seats Left</th>
+    <th>Link To Train</th>
+    <!-- Add more table headers for other attributes if needed -->
+  </tr>
+</thead>
+<tbody>
+<% @trains_upcoming.each do |train| %>
+  <tr>
+  <td><%= train.trainnumber %></td>
+  <td><%= train.departurestation %></td>
+  <td><%= train.terminationstation %></td>
+  <td><%= train.departuredate %></td>
+  <td><%= train.departuretime %></td>
+  <td><%= train.arrivaldate %></td>
+  <td><%= train.arrivaltime %></td>
+  <td><%= train.ticketprice %></td>
+  <td><%= train.traincapacity %></td>
+  <td><%= train.seatsleft %></td>
+  <td><%= link_to "Show", train %></td>
+  </tr>
+<% end %>
+
+
+</tbody>
+</table>
+
+<% if admin_user %>
+<br><%= link_to "Admin Home", admins_url %><br>
+<% elsif current_user %>
+<br><%= link_to "User Home", passengers_url %><br>
+<% end %>

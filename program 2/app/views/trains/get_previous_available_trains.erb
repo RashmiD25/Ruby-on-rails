@@ -1,0 +1,33 @@
+<h1>Trip History</h1>
+
+<table border="1">
+<thead>
+  <tr>
+    <th>Train Number</th>
+    <th>Departure Station</th>
+    <th>Termination Station</th>
+    <th>Departure Date</th>
+    <th>Arrival Date</th>
+    <!-- Add more table headers for other attributes if needed -->
+  </tr>
+</thead>
+<tbody>
+<% @trains_previous.each do |train| %>
+  <tr>
+  <td><%= train.trainnumber %></td>
+  <td><%= train.departurestation %></td>
+  <td><%= train.terminationstation %></td>
+  <td><%= train.departuredate %></td>
+  <td><%= train.arrivaldate %></td>
+  </tr>
+<% end %>
+
+
+</tbody>
+</table>
+
+<% if admin_user %>
+<br><%= link_to "Admin Home", admins_url %><br>
+<% elsif current_user %>
+<br><%= link_to "User Home", passengers_url %><br>
+<%end%>

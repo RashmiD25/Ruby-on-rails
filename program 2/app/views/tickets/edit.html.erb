@@ -1,0 +1,16 @@
+<h1>Editing ticket</h1>
+
+<%= render "form", ticket: @ticket %>
+
+<br>
+
+<div>
+  <%= link_to "Show this ticket", @ticket %> |
+  <%= link_to "Back to tickets", tickets_path %>
+</div>
+
+<% if admin_user %>
+<br><%= link_to "Admin Home", admins_url %><br>
+<% elsif current_user %>
+<br><%= link_to "User Home", passengers_url %><br>
+<%end%>

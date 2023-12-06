@@ -1,0 +1,22 @@
+<div id="<%= dom_id review %>">
+  <p>
+    <strong>Passengerid:</strong>
+    <%= review.passengerid %>
+  </p>
+
+  <p>
+    <strong>Trainid:</strong>
+    <%= review.trainid %>
+  </p>
+
+  <p>
+    <strong>Rating:</strong>
+  <%= number_field_tag 'review[rating]', review.rating, in: 1..5 %>
+  </p>
+
+  <p>
+    <strong>Feedback:</strong>
+    <%= review.feedback %>
+  </p>
+
+</div>

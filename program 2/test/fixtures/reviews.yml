@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  passengerid: MyString
+  trainid: MyString
+  rating: 1
+  feedback: MyString
+
+two:
+  passengerid: MyString
+  trainid: MyString
+  rating: 1
+  feedback: MyString

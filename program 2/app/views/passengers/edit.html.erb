@@ -1,0 +1,18 @@
+
+<% if current_user && current_user.id.to_s != params[:id] %>
+<h1> Invalid Request</h1>
+<%= link_to "Passenger Home", passengers_path %>
+<% else %>
+<h1>Editing passenger</h1>
+
+<%= render "form", passenger: @passenger %>
+
+<br>
+
+<div>
+  <!-- <%= link_to "Show this passenger", @passenger %> -->
+  <%= button_to "Delete Passenger", @passenger, method: :delete %>
+  <%= link_to "Passenger Home", passengers_path %>
+</div>
+
+<% end %>

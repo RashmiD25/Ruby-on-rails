@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @passenger %>
+
+<div>
+  <%= link_to "Edit this passenger", edit_passenger_path(@passenger) %> |
+  <% if admin_user %>
+  <%= link_to "Back to Home", admins_url %>
+  <% elsif current_user %>
+  <%= link_to "Back to Home", passengers_url %>
+  <% else %>
+  <%= link_to "Back to Login", login_path %>
+  <% end %>
+
+  <%= button_to "Destroy this passenger", @passenger, method: :delete %>
+</div>

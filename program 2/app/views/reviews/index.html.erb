@@ -1,0 +1,96 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Reviews</h1>
+
+<% if admin_user %>
+<div id="reviews">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Passenger Id</th>
+        <th>Train Id</th>
+        <th>Rating</th>
+        <th>Feedback</th>
+        <th>Link To Review</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+        <td><%= review.passengerid %></td>
+        <td><%= review.trainid %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.feedback %></td>
+        <td><%= link_to "Show", review %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+<% end %>
+
+<% if current_user %>
+<div id="reviews">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Passenger Id</th>
+        <th>Train Id</th>
+        <th>Rating</th>
+        <th>Feedback</th>
+        <th>Link To Review</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+      <% if review.passengerid == current_user.id.to_s %>
+        <tr>
+        <td><%= review.passengerid %></td>
+        <td><%= review.trainid %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.feedback %></td>
+        <td><%= link_to "Show", review %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+    </table>
+</div>
+<% end %>
+
+
+
+<% if admin_user %>
+<h2> Select user to see their reviews: </h2>
+<% @reviews.each do |review| %>
+<td><%= link_to review.passengerid, "reviews/user/#{review.passengerid}" %></td>
+<% end%>
+<% end%>
+
+<% if admin_user %>
+<h2> Select train to see its reviews: </h2>
+<% @reviews.each do |review| %>
+<td><%= link_to review.trainid, "reviews/train/#{review.trainid}" %></td>
+<% end%>
+<% end%>
+
+<% if current_user %>
+<h2> Select train to see its reviews: </h2>
+<% @reviews.each do |review| %>
+<% if review.passengerid == current_user.id.to_s %>
+<td><%= link_to review.trainid, "reviews/train/#{review.trainid}" %></td>
+<% end %>
+<% end %>
+<% end%>
+
+
+
+<h2> </h2>
+
+<% if admin_user %>
+<br><%= link_to "New review", new_review_path %><br>
+<br><%= link_to "Admin Home", admins_url %><br>
+<% elsif current_user %>
+<br><%= link_to "New review", new_review_path %><br>
+<br><%= link_to "User Home", passengers_url %><br>
+<% end %>
